@@ -5,7 +5,7 @@ export const router = {};
 /**
  * Changes the "page" (state) that your SPA app is currently set to
  */
-router.setState = function() {
+router.setState = function(state, pop) {
   /**
    * - There are three states that your SPA app will have
    *    1. The home page
@@ -35,4 +35,35 @@ router.setState = function() {
    *    1. You may add as many helper functions in this file as you like
    *    2. You may modify the parameters of setState() as much as you like
    */
+
+  const body = document.getElementsByTagName('body')[0];
+  const heading = body.getElementsByTagName('h1')[0];
+
+  let url = '';
+
+  switch (state.state) {
+    case 'settings':
+      body.className = 'settings';
+      heading.innerHTML = 'Settings';
+      url = '/#settings';
+      break;
+
+    case 'entry':
+      let entryPage = document.getElementsByTagName('entry-page')[0];
+      entryPage.remove();
+      entryPage = document.createElement('entry-page');
+      document.querySelector('body').appendChild(entryPage);
+      entryPage.entry = state.entry;
+      body.className = 'single-entry';
+      heading.innerHTML = 'Entry ' + state.entryNum;
+      url = '/#entry' + state.entryNum;
+      break;
+
+    default:
+      body.className = '';
+      heading.innerHTML = 'Journal Entries';
+      url = '#';
+  }
+
+  if (!pop) { history.pushState(state, '', url) };
 }
