@@ -1,8 +1,8 @@
 # Lab7_Solution
 
-## Names
+## Authors:
 - Elias Fang
 - Kyle Hu
 
-## Github Pages URL
+## Pages:
 https://eliasfang.github.io/Lab7/
