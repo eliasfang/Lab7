@@ -5,3 +5,4 @@
 - Kyle Hu
 
 ## Github Pages URL
+https://eliasfang.github.io/Lab7/
